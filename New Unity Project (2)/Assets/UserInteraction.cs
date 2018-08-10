@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using HTC.UnityPlugin.Vive;
 public enum Direction{
     Front,
     Left,
@@ -18,6 +18,8 @@ public class UserInteraction : MonoBehaviour {
     public int testCount=0;//测试用的计数器
     public RhythmState currentRhythmState;
     public GameObject playerActionController;
+    public GameObject rightController;//控制器
+    public GameObject playerCamera;//玩家
 	void Start () {
 		
 	}
@@ -30,7 +32,10 @@ public class UserInteraction : MonoBehaviour {
         {
             //test.color = new Color(0, 0, 1);
             //允许有指令输入的时候
-            if()
+            if (ViveInput.GetTriggerValue(HandRole.RightHand, false) != 0)
+            {
+                Move(GetCurrentDirection(rightController.transform));
+            }
             RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
         }
         else if (currentRhythmState == RhythmState.Action)
@@ -46,6 +51,22 @@ public class UserInteraction : MonoBehaviour {
 
 
 	}
+    Direction GetCurrentDirection(Transform input)//输入一条射线的方向，返回这条射线代表的方位
+    {
+        float temp=Quaternion.Angle(input.rotation, playerCamera.transform.rotation);
+        if (temp > 45&& temp < 90){
+            return Direction.Right;
+        }
+        if (temp > -90 && temp < 45)
+        {
+            return Direction.Left;
+        }
+        if (temp > -45 && temp < 45)
+        {
+            return Direction.Front;
+        }
+        return Direction.Back;
+    }
     public void GetMovement(GestureType g)
     {
         Debug.Log("receiving " + g);
