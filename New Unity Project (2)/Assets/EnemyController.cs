@@ -16,7 +16,8 @@ public class EnemyController : MonoBehaviour {
     public float speed = 10;
     public GameObject toFollow;
     public Vector3 Destination;
-	// Use this for initialization
+
+    
 	void Start () {
 		
 	}
@@ -47,11 +48,14 @@ public class EnemyController : MonoBehaviour {
 
     void Attack()
     {
-        enemy.GetComponent<Animator>().SetTrigger("Attack_trigger");//播放攻击动画
+        Debug.Log("发动了攻击");
+        this.GetComponent<Animator>().SetTrigger("Attack_trigger");//播放攻击动画
     }
-    void MoveToward(Vector3 input)
+
+    void MoveToward(Vector3 destination)
     {
-        Destination = input;
-        enemy.GetComponent<Animator>().SetTrigger("Idle_Walk_trigger");//播放移动的动画
+        Debug.Log("开始了移动");
+        this.GetComponent<Animator>().SetBool("IsWalking",true);//播放移动的动画
+
     }
 }
