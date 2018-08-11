@@ -38,7 +38,8 @@ public class RhythmController : MonoBehaviour {
 
     void Update()
     {
-       // Debug.Log(clock.transform.position);
+        // Debug.Log(clock.transform.position);
+        Debug.Log(clock.transform.position.x + "dfasf" + end + banner.transform.position.x);
         if (!clock.transform.position.x.Equals(end+banner.transform.position.x))
         {
             clock.GetComponent<RectTransform>().position += new Vector3(1, 0, 0) * turn*25f; //* speed*Time.deltaTime;
@@ -48,7 +49,7 @@ public class RhythmController : MonoBehaviour {
             end = -end;
         }
         float delta = Mathf.Abs(clock.transform.position.x - flag.transform.position.x) ;
-        Debug.Log(delta);
+    //    Debug.Log(delta);
         if (delta<instructionTolerate)
         {
             currentState = RhythmState.Instruction;

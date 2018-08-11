@@ -28,6 +28,7 @@ public class PlayerActionManager : MonoBehaviour {
             player.transform.position += towards * speed*Time.deltaTime;
      //       Debug.Log("正在移动");
         }
+
 	}
     public void PlayerMove(Direction inputDirection)
     {

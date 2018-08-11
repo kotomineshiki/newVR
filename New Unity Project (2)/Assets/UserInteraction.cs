@@ -23,13 +23,20 @@ public class UserInteraction : MonoBehaviour {
     public GameObject playerCamera;//玩家
     public bool  left=false;
     public bool right = false;
+    public GameObject weapeon;
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-             currentRhythmState = RhythmController.instance.GetCurrentState();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Attack();
+        }
+
+
+        currentRhythmState = RhythmController.instance.GetCurrentState();
         //currentRhythmState = RhythmState.Instruction;//测试
         if (currentRhythmState == RhythmState.Instruction)
         {
@@ -102,6 +109,10 @@ public class UserInteraction : MonoBehaviour {
                 left = true;
             }
         }
+        if (g == GestureType.Left_Right || g == GestureType.Right_Left)
+        {
+            Attack();
+        }
 
     }
     void FixedUpdate()//执行动作
@@ -119,7 +130,7 @@ public class UserInteraction : MonoBehaviour {
     }
     private void Attack()
     {
-
+        weapeon.GetComponent<Animator>().SetTrigger("rightToLeft");
     }
     private void StopAllAction()//停止一切需要静止的活动
     {
