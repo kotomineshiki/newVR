@@ -16,31 +16,54 @@ public class RhythmController : MonoBehaviour {
      */
     public static RhythmController instance;//简单单例模式
     public RhythmState currentState=RhythmState.Forbidden;
-    public float repeatTime;//重复时间：时间周期
-    public float instructionRate;//指令时间比例
-    public float actionRate;//执行时间比例
+   // public float repeatTime;//重复时间：时间周期
+   // public float speed;
 
     public GameObject banner;
     public GameObject clock;
     public GameObject flag;
 
-
+    public int turn=1;
+    public float end;
+    public float instructionTolerate;
+    public float actionTolerate;
 	// Use this for initialization
 	void Awake () {
         instance = this;
 	}
     void Start()
     {
-
+     //   speed = (end * 2f) / repeatTime;
     }
 
     void Update()
     {
-        currentState = RhythmState.Instruction;
-        if (Input.GetButtonDown("Fire1"))
+       // Debug.Log(clock.transform.position);
+        if (!clock.transform.position.x.Equals(end+banner.transform.position.x))
+        {
+            clock.GetComponent<RectTransform>().position += new Vector3(1, 0, 0) * turn*25f; //* speed*Time.deltaTime;
+        }else
+        {
+            turn = -turn;
+            end = -end;
+        }
+        float delta = Mathf.Abs(clock.transform.position.x - flag.transform.position.x) ;
+        Debug.Log(delta);
+        if (delta<instructionTolerate)
+        {
+            currentState = RhythmState.Instruction;
+        }else if(delta<actionTolerate)
         {
             currentState = RhythmState.Forbidden;
-        }   
+            if(clock.transform.position.x - flag.transform.position.x>0&&turn==1)
+                currentState = RhythmState.Action;
+            if (clock.transform.position.x - flag.transform.position.x < 0 && turn == -1)
+                currentState = RhythmState.Action;
+        }else
+        {
+            currentState = RhythmState.Forbidden;
+        }
+
     }
     void FixedUpdate () {
 
