@@ -16,8 +16,8 @@ public class RhythmController : MonoBehaviour {
      */
     public static RhythmController instance;//简单单例模式
     public RhythmState currentState=RhythmState.Forbidden;
-   // public float repeatTime;//重复时间：时间周期
-   // public float speed;
+    public float repeatTime;//重复时间：时间周期
+    public float speed;
 
     public GameObject banner;
     public GameObject clock;
@@ -33,22 +33,37 @@ public class RhythmController : MonoBehaviour {
 	}
     void Start()
     {
-     //   speed = (end * 2f) / repeatTime;
+        speed = (end) / repeatTime;
     }
 
     void Update()
     {
         // Debug.Log(clock.transform.position);
-        Debug.Log(clock.transform.position.x + "dfasf" + end + banner.transform.position.x);
-        if (!clock.transform.position.x.Equals(end+banner.transform.position.x))
+        Debug.Log(clock.transform.localPosition.x + "dfasf" + end );
+        if(turn == 1)
         {
-            clock.GetComponent<RectTransform>().position += new Vector3(1, 0, 0) * turn*25f; //* speed*Time.deltaTime;
+            if (clock.transform.localPosition.x < end)//去程
+            {
+                clock.GetComponent<RectTransform>().position += new Vector3(1, 0, 0) * turn * speed * Time.deltaTime;
+            }else
+            {
+                turn = -1;
+                end = -end;            }
         }else
         {
-            turn = -turn;
-            end = -end;
+            if(turn == -1)
+            {
+                if (clock.transform.localPosition.x > end)//回程
+                {
+                    clock.GetComponent<RectTransform>().position -= new Vector3(1, 0, 0)   * speed * Time.deltaTime;
+                }else
+                {
+                    turn = 1;
+                    end = -end;
+                }
+            }
         }
-        float delta = Mathf.Abs(clock.transform.position.x - flag.transform.position.x) ;
+        float delta = Mathf.Abs(clock.transform.localPosition.x - flag.transform.localPosition.x) ;
     //    Debug.Log(delta);
         if (delta<instructionTolerate)
         {
