@@ -43,21 +43,21 @@ public class ViveEvent : MonoBehaviour
     
     void OnTriggerClicked(object sender, ClickedEventArgs e)
     {
-        Debug.Log(e.controllerIndex + "trigger clicked");
+   //     Debug.Log(e.controllerIndex + "trigger clicked");
         // 开火
         NotificationManager.Instance.Notify(NotificationType.Gun_Fire.ToString(),(int)controllerType);
     }
 
     void OnTriggerPressDn(object sender, ClickedEventArgs e)
     {
-        Debug.Log(e.controllerIndex + "trigger press down");
+   //     Debug.Log(e.controllerIndex + "trigger press down");
         // 
         NotificationManager.Instance.Notify(NotificationType.Gathering_Stength.ToString(), (int)controllerType);
     }
 
     void OnTriggerUnclicked(object sender, ClickedEventArgs e)
     {
-        Debug.Log(e.controllerIndex + "trigger  unclicked");
+     //   Debug.Log(e.controllerIndex + "trigger  unclicked");
         NotificationManager.Instance.Notify(NotificationType.Gun_KeyUp.ToString(), (int)controllerType);
     }
         
@@ -65,12 +65,12 @@ public class ViveEvent : MonoBehaviour
     {
         // 扔雷
         NotificationManager.Instance.Notify(NotificationType.Throw_Bomb.ToString(), (int)controllerType);
-        Debug.Log(e.controllerIndex + "pad clicked");
+    //    Debug.Log(e.controllerIndex + "pad clicked");
     }
 
     void OnPadUnclicked(object sender, ClickedEventArgs e)
     {
-        Debug.Log(e.controllerIndex + "padd  un clicked");
+     //   Debug.Log(e.controllerIndex + "padd  un clicked");
     }
 
     void HiddenControllerModel()

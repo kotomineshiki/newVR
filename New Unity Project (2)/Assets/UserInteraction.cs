@@ -19,7 +19,10 @@ public class UserInteraction : MonoBehaviour {
     public RhythmState currentRhythmState;
     public GameObject playerActionController;
     public GameObject rightController;//控制器
+    public GameObject leftController;//左控制器
     public GameObject playerCamera;//玩家
+    public bool  left=false;
+    public bool right = false;
 	void Start () {
 		
 	}
@@ -32,19 +35,30 @@ public class UserInteraction : MonoBehaviour {
         {
             //test.color = new Color(0, 0, 1);
             //允许有指令输入的时候
-            if (ViveInput.GetTriggerValue(HandRole.RightHand, false) != 0)
-            {
-                Move(GetCurrentDirection(rightController.transform));
-            }
+
             RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
         }
         else if (currentRhythmState == RhythmState.Action)
         {//允许世界上的各个要素开始运动的时候
          //   Debug.Log("YEs");
+            if (left == true && right == true)
+            {
+                Move(Direction.Front);
+            }
+            if (left = true && right == false)
+            {
+                Move(Direction.Left);
+            }
+            if (left == false && right == true)
+            {
+                Move(Direction.Right);
+            }
             RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
         }
         else
         {
+            right = false;
+            left = false;
             StopAllAction();
             RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
         }
@@ -53,11 +67,13 @@ public class UserInteraction : MonoBehaviour {
 	}
     Direction GetCurrentDirection(Transform input)//输入一条射线的方向，返回这条射线代表的方位
     {
+        Vector3 delta=input.forward - playerCamera.transform.forward;//得到输入射线的方向
         float temp=Quaternion.Angle(input.rotation, playerCamera.transform.rotation);
-        if (temp > 45&& temp < 90){
+        Debug.Log(delta);
+        if (temp > 45&& temp < 135){
             return Direction.Right;
         }
-        if (temp > -90 && temp < 45)
+        if (temp > -135 && temp < -45)
         {
             return Direction.Left;
         }
@@ -67,17 +83,24 @@ public class UserInteraction : MonoBehaviour {
         }
         return Direction.Back;
     }
-    public void GetMovement(GestureType g)
+    public void GetMovement(GestureType g,string name)
     {
+        currentRhythmState = RhythmController.instance.GetCurrentState();
+        if (currentRhythmState != RhythmState.Instruction) return;
+        if (g == GestureType.None) return;
         Debug.Log("receiving " + g);
-        if (g == GestureType.Right_Left)
+        if (g == GestureType.Up_Down||g==GestureType.Down_Up)
         {
-            Move(Direction.Left);
+            if(name== "Controller(right)")
+            {
+                right = true;
+            }
+            if (name == "Controller(left)")
+            {
+                left = true;
+            }
         }
-        if (g == GestureType.Left_Right)
-        {
-            Move(Direction.Right);
-        }
+
     }
     void FixedUpdate()//执行动作
     {

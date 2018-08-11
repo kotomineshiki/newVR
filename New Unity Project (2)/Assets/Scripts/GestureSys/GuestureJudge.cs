@@ -216,7 +216,7 @@ public partial class GuestureJudge : MonoBehaviour
                     if (gestureType != GestureType.None)
                     {
                         Debug.Log("current recongnize gesture is " + gestureType.ToString());
-                        userInteraction.GetComponent<UserInteraction>().GetMovement(gestureType);
+                        userInteraction.GetComponent<UserInteraction>().GetMovement(gestureType,this.name);
                     }
                 }
             }

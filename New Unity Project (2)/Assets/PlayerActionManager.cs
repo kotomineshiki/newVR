@@ -15,7 +15,7 @@ public class PlayerActionManager : MonoBehaviour {
     public GameObject playerEye;
     public float speed=2f;//玩家移动的速度
     public PlayerState playerState;
-    public Vector3 towards;//要移动往的方向
+    public Vector3 towards=new Vector3(0,0,0);//要移动往的方向
 	// Use this for initialization
 	void Start () {
 		
@@ -56,5 +56,6 @@ public class PlayerActionManager : MonoBehaviour {
     public void ForceStop()//停止当前玩家执行的一切活动
     {
         playerState = PlayerState.Idle;
+        towards = new Vector3(0, 0, 0);
     }
 }
