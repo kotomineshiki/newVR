@@ -14,7 +14,8 @@ public class RhythmController : MonoBehaviour {
      *其他类会通过查询这个类的状态来判断当前处于什么状态：是否可以操作玩家
      * 
      */
-    public AudioSource music;//disco
+    public AudioSource musicPlayer;//disco
+
     public static RhythmController instance;//简单单例模式
     public RhythmState currentState=RhythmState.Forbidden;
     public float repeatTime;//重复时间：时间周期
@@ -34,8 +35,8 @@ public class RhythmController : MonoBehaviour {
 	}
     void Start()
     {
-        speed = (end) / repeatTime;
-        music.Play();
+        speed = (end*2) / repeatTime;
+        musicPlayer.Play();
     }
 
     void Update()
@@ -66,8 +67,39 @@ public class RhythmController : MonoBehaviour {
                 }
             }
         }
-        float delta = Mathf.Abs(clock.transform.localPosition.x - flag.transform.localPosition.x) ;
-    //    Debug.Log(delta);
+        float delta = clock.transform.localPosition.x - flag.transform.localPosition.x ;
+        Debug.Log(delta);
+        if (turn == 1)//去程
+        {
+            if (delta > -instructionTolerate && delta < instructionTolerate)
+            {
+                currentState = RhythmState.Instruction;
+            }
+            else if (delta > instructionTolerate && delta < actionTolerate)
+            {
+                currentState = RhythmState.Action;
+            }else
+            {
+                currentState = RhythmState.Forbidden;
+            }
+
+        }
+        else if(turn ==-1)
+        {
+            if (delta < instructionTolerate && delta >-instructionTolerate)
+            {
+                currentState = RhythmState.Instruction;
+            }
+            else if (delta >-actionTolerate && delta < -instructionTolerate)
+            {
+                currentState = RhythmState.Action;
+            }
+            else
+            {
+                currentState = RhythmState.Forbidden;
+            }
+        }
+/*
         if (delta<instructionTolerate)
         {
             currentState = RhythmState.Instruction;
@@ -81,7 +113,7 @@ public class RhythmController : MonoBehaviour {
         }else
         {
             currentState = RhythmState.Forbidden;
-        }
+        }*/
 
     }
     void FixedUpdate () {

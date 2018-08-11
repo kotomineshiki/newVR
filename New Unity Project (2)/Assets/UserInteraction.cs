@@ -23,6 +23,7 @@ public class UserInteraction : MonoBehaviour {
     public GameObject playerCamera;//玩家
     public bool  left=false;
     public bool right = false;
+    public int ReceivingCount;//每一个指令时机内允许接受到的指令数量
     public GameObject weapeon;
 	void Start () {
 		
@@ -64,6 +65,9 @@ public class UserInteraction : MonoBehaviour {
         }
         else
         {
+            testCount += ReceivingCount;
+            test.text = testCount.ToString();
+            ReceivingCount = 0;
             right = false;
             left = false;
             StopAllAction();
@@ -101,12 +105,21 @@ public class UserInteraction : MonoBehaviour {
         {
             if(name== "Controller (right)")
             {
-                right = true;
+                if (right != true)
+                {
+                    right = true;
+                    ReceivingCount++;
+                }
+
                 Debug.Log("right");
             }
             if (name == "Controller (left)")
             {
-                left = true;
+                if (left != true)
+                {
+                    left = true;
+                    ReceivingCount++;
+                }
             }
         }
         if (g == GestureType.Left_Right || g == GestureType.Right_Left)
