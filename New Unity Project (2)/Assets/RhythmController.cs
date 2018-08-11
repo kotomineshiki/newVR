@@ -14,6 +14,7 @@ public class RhythmController : MonoBehaviour {
      *其他类会通过查询这个类的状态来判断当前处于什么状态：是否可以操作玩家
      * 
      */
+    public AudioSource music;//disco
     public static RhythmController instance;//简单单例模式
     public RhythmState currentState=RhythmState.Forbidden;
     public float repeatTime;//重复时间：时间周期
@@ -34,17 +35,20 @@ public class RhythmController : MonoBehaviour {
     void Start()
     {
         speed = (end) / repeatTime;
+        music.Play();
     }
 
     void Update()
     {
         // Debug.Log(clock.transform.position);
         Debug.Log(clock.transform.localPosition.x + "dfasf" + end );
-        if(turn == 1)
+
+        if (turn == 1)
         {
             if (clock.transform.localPosition.x < end)//去程
             {
-                clock.GetComponent<RectTransform>().position += new Vector3(1, 0, 0) * turn * speed * Time.deltaTime;
+                clock.GetComponent<RectTransform>().localPosition += new Vector3(1, 0, 0)  * speed * Time.deltaTime;
+
             }else
             {
                 turn = -1;
@@ -55,7 +59,7 @@ public class RhythmController : MonoBehaviour {
             {
                 if (clock.transform.localPosition.x > end)//回程
                 {
-                    clock.GetComponent<RectTransform>().position -= new Vector3(1, 0, 0)   * speed * Time.deltaTime;
+                    clock.GetComponent<RectTransform>().localPosition -= new Vector3(1, 0, 0)   * speed * Time.deltaTime;
                 }else
                 {
                     turn = 1;
