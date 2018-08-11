@@ -39,7 +39,7 @@ public class RhythmController : MonoBehaviour {
     void Update()
     {
         // Debug.Log(clock.transform.position);
-        Debug.Log(clock.transform.localPosition.x + "dfasf" + end );
+       // Debug.Log(clock.transform.localPosition.x + "dfasf" + end );
         if(turn == 1)
         {
             if (clock.transform.localPosition.x < end)//去程

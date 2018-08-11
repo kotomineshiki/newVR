@@ -35,7 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010703968092}
   - component: {fileID: 65000012381650084}
-  - component: {fileID: 114000012258905804}
   m_Layer: 2
   m_Name: hitBox
   m_TagString: Weapon
@@ -233,7 +232,7 @@ MonoBehaviour:
     reaction_id: 0
     attackName: 
   hitBoxes:
-  - {fileID: 114000012258905804}
+  - {fileID: 0}
   damageModifier: 0
   canApplyDamage: 0
   onDamageHit:
@@ -299,21 +298,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f0dad368bc2d5944ca75a821ad024ce2, type: 3}
   - {fileID: 8300000, guid: 3bc8b33abc1b51d4badb229b61e36e33, type: 3}
   - {fileID: 8300000, guid: bfa1063bd08a3d54595a731677875059, type: 3}
---- !u!114 &114000012258905804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011805825326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb97f58541b05b24ab37661346298ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackObject: {fileID: 0}
-  trigger: {fileID: 65000012381650084}
-  damagePercentage: 100
-  triggerType: -1
 --- !u!114 &114980914777861048
 MonoBehaviour:
   m_ObjectHideFlags: 1
