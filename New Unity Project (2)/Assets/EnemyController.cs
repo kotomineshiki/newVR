@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour {
         }
         if (Input.GetButtonDown("Fire2"))
         {
-            MoveToward();
+           // MoveToward();
         }
 	}
     void Attack()
