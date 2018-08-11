@@ -380,12 +380,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 796900274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f5d030e00248c4aa10d666ef118262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1306600124}
+  enemyState: 0
+  toFollow: {fileID: 0}
+  speed: 0
 --- !u!1 &839059798
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +656,7 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfffbc0f933b8b042becfb6178213cba, type: 2}
   m_IsPrefabAsset: 0
---- !u!43 &966056042
+--- !u!43 &1036571038
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -860,39 +862,6 @@ MonoBehaviour:
   right: 0
   ReceivingCount: 0
   weapeon: {fileID: 0}
---- !u!21 &1132762981
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1167678611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1142236683683362, guid: 25e83f8cf30961c4ca8874704678f3de,
@@ -1059,6 +1028,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1964874952211972, guid: dfffbc0f933b8b042becfb6178213cba,
     type: 2}
   m_PrefabInternal: {fileID: 957397351}
+--- !u!114 &1306600125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306600124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f5d030e00248c4aa10d666ef118262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: 0
+  toFollow: {fileID: 311224809}
+  speed: 5
 --- !u!1 &1407592528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013590549280, guid: c0be882c97c7cdf4e8f61eef7a358dd3,
@@ -1371,12 +1354,12 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 966056042}
+      objectReference: {fileID: 1036571038}
     - target: {fileID: 23000011417371536, guid: c0be882c97c7cdf4e8f61eef7a358dd3,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1132762981}
+      objectReference: {fileID: 2044928424}
     - target: {fileID: 114000011453858346, guid: c0be882c97c7cdf4e8f61eef7a358dd3,
         type: 2}
       propertyPath: HiddenViveControlllerMode
@@ -1507,6 +1490,39 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92f611746c3ac34896c8c25e21a39f0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!21 &2044928424
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2056916930
 GameObject:
   m_ObjectHideFlags: 0
