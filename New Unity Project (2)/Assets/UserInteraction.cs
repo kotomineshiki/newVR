@@ -37,15 +37,15 @@ public class UserInteraction : MonoBehaviour {
             //允许有指令输入的时候
 
             //RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
-        }
-        else if (currentRhythmState == RhythmState.Action)
-        {//允许世界上的各个要素开始运动的时候
+     //   }
+    //    else if (currentRhythmState == RhythmState.Action)
+     //   {//允许世界上的各个要素开始运动的时候
          //   Debug.Log("YEs");
             if (left == true && right == true)
             {
                 Move(Direction.Front);
             }
-            if (left = true && right == false)
+            if (left == true && right == false)
             {
                 Move(Direction.Left);
             }
@@ -88,14 +88,16 @@ public class UserInteraction : MonoBehaviour {
         currentRhythmState = RhythmController.instance.GetCurrentState();
         if (currentRhythmState != RhythmState.Instruction) return;
         if (g == GestureType.None) return;
+     //   Debug.Log(name);
         Debug.Log("receiving " + g);
         if (g == GestureType.Up_Down||g==GestureType.Down_Up)
         {
-            if(name== "Controller(right)")
+            if(name== "Controller (right)")
             {
                 right = true;
+                Debug.Log("right");
             }
-            if (name == "Controller(left)")
+            if (name == "Controller (left)")
             {
                 left = true;
             }

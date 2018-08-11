@@ -36,7 +36,11 @@ public class RhythmController : MonoBehaviour {
 
     void Update()
     {
-        
+        currentState = RhythmState.Instruction;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            currentState = RhythmState.Forbidden;
+        }   
     }
     void FixedUpdate () {
 

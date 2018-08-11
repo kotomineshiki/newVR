@@ -45,7 +45,7 @@ public class PlayerActionManager : MonoBehaviour {
         }
         if (inputDirection == Direction.Front)
         {
-            towards = new Vector3(-1, 0, 0);
+            towards = playerEye.transform.forward;
         }
         if (inputDirection == Direction.Back)
         {
