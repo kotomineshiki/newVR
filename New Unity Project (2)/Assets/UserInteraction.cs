@@ -36,7 +36,7 @@ public class UserInteraction : MonoBehaviour {
             //test.color = new Color(0, 0, 1);
             //允许有指令输入的时候
 
-            RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
+            //RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
         }
         else if (currentRhythmState == RhythmState.Action)
         {//允许世界上的各个要素开始运动的时候
@@ -53,14 +53,14 @@ public class UserInteraction : MonoBehaviour {
             {
                 Move(Direction.Right);
             }
-            RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
+            //RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
         }
         else
         {
             right = false;
             left = false;
             StopAllAction();
-            RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
+            //RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0);
         }
 
 
