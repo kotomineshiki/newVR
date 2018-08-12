@@ -292,11 +292,12 @@ public partial class GuestureJudge
         NotificationManager.Instance.Subscribe(
               NotificationType.Gesture_Recongnize_Result.ToString(), GetRecongnizeResult);
     }
-    
+    bool firstUse = false;
     void UpdateUnderEditor()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (/*Input.GetKeyDown(KeyCode.S)*/firstUse==false)
         {
+            firstUse = true;
             NotificationManager.Instance.Notify(
                 NotificationType.Gesture_Recongnize.ToString(),new Vector3(5,0,0),1000.0f);
             //Debug.Log("start to check gesture");

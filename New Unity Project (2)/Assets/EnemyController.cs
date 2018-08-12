@@ -95,7 +95,8 @@ public class EnemyController : MonoBehaviour {
         if (other.tag == "Sword")
         {
             Debug.Log("sword hit");
-            effectSystem.GetComponent<EffectController>().Die(this.gameObject);
+            if(RhythmController.instance.GetCurrentState()==RhythmState.Action||RhythmController.instance.GetCurrentState()==RhythmState.Instruction)//必须在符合规定时间内才有效
+                effectSystem.GetComponent<EffectController>().Die(this.gameObject);
         }
     }
 }

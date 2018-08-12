@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: d8eaf29929182644fbe6d7fcea16beca
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arms
+    100002: Base
+    100004: Body
+    100006: Bulb_Glow
+    100008: //RootNode
+    100010: Light_Beam_Strip_A
+    100012: Light_Beam_Strip_A1
+    100014: Light_Beam_Strip_A2
+    100016: Light_Beam_Strip_A3
+    100018: Light_Cone
+    100020: group1
+    100022: Light_Beam_Strip_A4
+    100024: group3
+    100026: Light_Beams
+    100028: LightBeams
+    400000: Arms
+    400002: Base
+    400004: Body
+    400006: Bulb_Glow
+    400008: //RootNode
+    400010: Light_Beam_Strip_A
+    400012: Light_Beam_Strip_A1
+    400014: Light_Beam_Strip_A2
+    400016: Light_Beam_Strip_A3
+    400018: Light_Cone
+    400020: group1
+    400022: Light_Beam_Strip_A4
+    400024: group3
+    400026: Light_Beams
+    400028: LightBeams
+    2300000: Arms
+    2300002: Base
+    2300004: Body
+    2300006: Bulb_Glow
+    2300008: Light_Beam_Strip_A
+    2300010: Light_Beam_Strip_A1
+    2300012: Light_Beam_Strip_A2
+    2300014: Light_Beam_Strip_A3
+    2300016: Light_Cone
+    2300018: Light_Beam_Strip_A4
+    2300020: group3
+    2300022: Light_Beams
+    3300000: Arms
+    3300002: Base
+    3300004: Body
+    3300006: Bulb_Glow
+    3300008: Light_Beam_Strip_A
+    3300010: Light_Beam_Strip_A1
+    3300012: Light_Beam_Strip_A2
+    3300014: Light_Beam_Strip_A3
+    3300016: Light_Cone
+    3300018: Light_Beam_Strip_A4
+    3300020: group3
+    3300022: Light_Beams
+    4300000: Base
+    4300002: Arms
+    4300004: Body
+    4300006: Bulb_Glow
+    4300008: Light_Beam_Strip_A
+    4300010: Light_Beam_Strip_A1
+    4300012: Light_Beam_Strip_A2
+    4300014: Light_Beam_Strip_A3
+    4300016: Light_Cone
+    4300018: Light_Beam_Strip_A4
+    4300020: group3
+    4300022: Light_Beams
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_Beams_A_mtl
+    second: {fileID: 2100000, guid: f28942355ec1ec84e92b128939486ed0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_Beams_B_mtl
+    second: {fileID: 2100000, guid: 388b7f6ca1063d14c9b6a7070659f5a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spotight_Body_mtl
+    second: {fileID: 2100000, guid: 1f8637fde9cfdd54088d291e1ac3c86d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spotlight_Bulb_mtl
+    second: {fileID: 2100000, guid: be713248aa280724ebd92710c75e934c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

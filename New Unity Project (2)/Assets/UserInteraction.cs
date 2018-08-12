@@ -24,7 +24,7 @@ public class UserInteraction : MonoBehaviour {
     public bool  left=false;
     public bool right = false;
     public int ReceivingCount;//每一个指令时机内允许接受到的指令数量
-    public GameObject weapeon;
+    public EffectController effectController;
 	void Start () {
 		
 	}
@@ -52,14 +52,18 @@ public class UserInteraction : MonoBehaviour {
             if (left == true && right == true)
             {
                 Move(Direction.Front);
+                effectController.OnRhym(Direction.Front);
             }
             if (left == true && right == false)
             {
                 Move(Direction.Left);
+                effectController.OnRhym(Direction.Left);
+
             }
             if (left == false && right == true)
             {
                 Move(Direction.Right);
+                effectController.OnRhym(Direction.Right);
             }
             //RhythmController.instance.circle.GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0);
         }
@@ -143,7 +147,7 @@ public class UserInteraction : MonoBehaviour {
     }
     private void Attack()
     {
-        weapeon.GetComponent<Animator>().SetTrigger("rightToLeft");
+       // weapeon.GetComponent<Animator>().SetTrigger("rightToLeft");
     }
     private void StopAllAction()//停止一切需要静止的活动
     {
