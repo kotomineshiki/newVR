@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EffectController : MonoBehaviour {
     public ParticleSystem OnDeadEffect;
-    public HandShake hand;
-
+    public HandShake rightHand;
+    public HandShake leftHand;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,7 +21,7 @@ public class EffectController : MonoBehaviour {
         var p = Instantiate(OnDeadEffect);
         p.transform.position = goDie.transform.position;
         OnDeadEffect.Play();
-        hand.Shake(0.3f);
+        rightHand.Shake(0.3f);
         goDie.gameObject.SetActive(false);
     }
 }

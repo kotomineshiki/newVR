@@ -124,7 +124,7 @@ public class UserInteraction : MonoBehaviour {
         }
         if (g == GestureType.Left_Right || g == GestureType.Right_Left)
         {
-            Attack();
+           // Attack();
         }
 
     }

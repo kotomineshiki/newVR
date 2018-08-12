@@ -38,19 +38,23 @@ public class PlayerActionManager : MonoBehaviour {
         {
 
             towards =Quaternion.AngleAxis(-90,Vector3.up)* playerEye.transform.forward;
+            towards.y = 0;
             Debug.Log(towards);
         }
         if (inputDirection == Direction.Right)
         {
             towards = Quaternion.AngleAxis(90, Vector3.up) * playerEye.transform.forward;
+            towards.y = 0;
         }
         if (inputDirection == Direction.Front)
         {
             towards = playerEye.transform.forward;
+            towards.y = 0;
         }
         if (inputDirection == Direction.Back)
         {
             towards = new Vector3(-1,0,0);
+            towards.y = 0;
         }
         playerState = PlayerState.Moving;//切换到运动状态 
     }

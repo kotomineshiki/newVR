@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
     //用来控制敌人的指令器
     // public GameObject enemy;
     public EnemyState enemyState=EnemyState.Idle;
+    public bool isRestricted=true;//被限制死在原地
     public GameObject model;
     public GameObject toFollow;
     public GameObject effectSystem;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (isRestricted == true) return;
         if (RhythmController.instance.GetCurrentState() == RhythmState.Instruction)
         {
             Vector3 delta = toFollow.transform.position - this.transform.position;
@@ -75,11 +77,12 @@ public class EnemyController : MonoBehaviour {
     {
      //   Debug.Log("开始了移动");
         destination = dest;
+        enemyState = EnemyState.Moving;
        // model.GetComponent<Animator>().SetBool("IsWalking",true);//播放移动的动画
     }
     void StopMovement()
     {//在这一个函数中应当停止动画和动作
-        if (model.GetComponent<Animation>().isPlaying == true) ;
+      //  if (model.GetComponent<Animation>().isPlaying == true) ;
             //model.GetComponent<Animation>().Stop();
     }
     void OnTriggerEnter(Collider other)
