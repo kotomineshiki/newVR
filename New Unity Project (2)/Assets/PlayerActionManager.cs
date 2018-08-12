@@ -59,4 +59,5 @@ public class PlayerActionManager : MonoBehaviour {
         playerState = PlayerState.Idle;
         towards = new Vector3(0, 0, 0);
     }
+
 }

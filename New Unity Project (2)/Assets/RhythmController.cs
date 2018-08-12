@@ -48,7 +48,7 @@ public class RhythmController : MonoBehaviour {
             if (clock.transform.localPosition.x < end)//去程
             {
                 clock.GetComponent<RectTransform>().localPosition += new Vector3(1, 0, 0)  * speed * Time.deltaTime;
-                Debug.Log("exe");
+             //   Debug.Log("exe");
             }
             else
             {

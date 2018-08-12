@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour {
     public EnemyState enemyState=EnemyState.Idle;
     public GameObject model;
     public GameObject toFollow;
+    public GameObject effectSystem;
     public Vector3 destination;
     public float speed;
 	void Start () {
@@ -46,13 +47,13 @@ public class EnemyController : MonoBehaviour {
                 this.transform.forward = (destination - this.transform.position);
                 //Vector3.RotateTowards()
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination,speed*Time.deltaTime);
-                if (model.GetComponent<Animation>().IsPlaying("newIdle") == false) model.GetComponent<Animation>().Play("newIdle");
+            //    if (model.GetComponent<Animation>().IsPlaying("newIdle") == false) model.GetComponent<Animation>().Play("newIdle");
 
             }
             if (enemyState == EnemyState.Attacking)//扑向玩家
             {
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, speed * Time.deltaTime);
-                model.GetComponent<Animation>().Play("newIdle");
+            //    model.GetComponent<Animation>().Play("newIdle");
                 //if()this.GetComponent<Animator>().SetTrigger("Attack_trigger");//播放攻击动画
             }
 
@@ -72,7 +73,7 @@ public class EnemyController : MonoBehaviour {
     }
     void Move(Vector3 dest)
     {
-        Debug.Log("开始了移动");
+     //   Debug.Log("开始了移动");
         destination = dest;
        // model.GetComponent<Animator>().SetBool("IsWalking",true);//播放移动的动画
     }
@@ -91,6 +92,7 @@ public class EnemyController : MonoBehaviour {
         if (other.tag == "Sword")
         {
             Debug.Log("sword hit");
+            effectSystem.GetComponent<EffectController>().Die(this.gameObject);
         }
     }
 }
