@@ -48,8 +48,9 @@ public class RhythmController : MonoBehaviour {
             if (clock.transform.localPosition.x < end)//去程
             {
                 clock.GetComponent<RectTransform>().localPosition += new Vector3(1, 0, 0)  * speed * Time.deltaTime;
-
-            }else
+                Debug.Log("exe");
+            }
+            else
             {
                 turn = -1;
                 end = -end;            }
@@ -68,7 +69,7 @@ public class RhythmController : MonoBehaviour {
             }
         }
         float delta = clock.transform.localPosition.x - flag.transform.localPosition.x ;
-        Debug.Log(delta);
+        //Debug.Log(delta);
         if (turn == 1)//去程
         {
             if (delta > -instructionTolerate && delta < instructionTolerate)
@@ -78,9 +79,11 @@ public class RhythmController : MonoBehaviour {
             else if (delta > instructionTolerate && delta < actionTolerate)
             {
                 currentState = RhythmState.Action;
+
             }else
             {
                 currentState = RhythmState.Forbidden;
+
             }
 
         }
@@ -93,10 +96,12 @@ public class RhythmController : MonoBehaviour {
             else if (delta >-actionTolerate && delta < -instructionTolerate)
             {
                 currentState = RhythmState.Action;
+
             }
             else
             {
                 currentState = RhythmState.Forbidden;
+
             }
         }
 /*
